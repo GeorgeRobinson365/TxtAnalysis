@@ -1,8 +1,5 @@
 from collections import Counter
 
-"""
-A partial implementation of the Bag ADT, using the Counter class.
-"""
 
 class Bag:
 
