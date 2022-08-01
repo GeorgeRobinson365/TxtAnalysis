@@ -5,20 +5,23 @@ class Bag:
 
     def __init__(self):
         """Create a new empty bag."""
-        self.items = Counter()
+         self.items = Counter()
         self.count = 0
 
     def size(self) -> int:
         """Return the total number of copies of all items in the bag."""
         return self.count
 
+    def is_empty(self):
+        return self.count == 0
+
     def add(self, item: object) -> None:
         """Add one copy of item to the bag.
            Multiple copies are allowed."""
         self.items[item] =  self.items[item] + 1
         self.count = self.count + 1
-
-    def discard(self, item: object) -> None:
+		
+	def discard(self, item: object) -> None:
         """ Remove at most one copy of item from the bag.
             No effect if item is not in the bag.
         """
@@ -26,6 +29,12 @@ class Bag:
             self.items[item] =  self.items[item] - 1   
             self.count = self.count - 1
 
+    def remove(self):
+        if self.is_empty():
+            return None
+        else:
+            self.count -= 1
+            return self.items.pop()
 
     def contains(self, item: object) -> bool:
         """ Return True if there is at least
@@ -34,7 +43,7 @@ class Bag:
         
         if self.items[item] > 0:
             return True
-        else:
+		else:
             return False
 
     def multiplicity(self, item: object) -> int:
