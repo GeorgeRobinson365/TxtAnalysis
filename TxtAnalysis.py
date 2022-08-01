@@ -5,7 +5,7 @@ class Bag:
 
     def __init__(self):
         """Create a new empty bag."""
-         self.items = Counter()
+        self.items = Counter()
         self.count = 0
 
     def size(self) -> int:
@@ -21,7 +21,7 @@ class Bag:
         self.items[item] =  self.items[item] + 1
         self.count = self.count + 1
 		
-	def discard(self, item: object) -> None:
+    def discard(self, item: object) -> None:
         """ Remove at most one copy of item from the bag.
             No effect if item is not in the bag.
         """
@@ -43,7 +43,7 @@ class Bag:
         
         if self.items[item] > 0:
             return True
-		else:
+        else:
             return False
 
     def multiplicity(self, item: object) -> int:
@@ -81,9 +81,7 @@ def transform_punctuation(line: str) -> str:
     return line
 
 
-"""  You will need to complete this function so it carries out the
-     specified purpose. You should also set the return type annotation.
-"""
+
 def get_excluded_words(filename: str) -> list:
     """Return the excluded words occurring in filename in a suitable data
        structure.
@@ -136,15 +134,12 @@ def bag_of_words(filename: str, excluded_words: list) -> Bag:
     return words
 
 
-print("Collecting excluded words from excluded.txt")
-"""  Replace the following line by your code to read the excluded words from text file
-     'hamlet_excluded_words.txt' and to store them in a suitable data structure.
-"""
+print("Collecting excluded words from local excluded.txt file")
+
 excluded_words = get_excluded_words('excluded.txt')
 
-print("Collecting words in Shakespeare's Hamlet...")
-"""  You should not need to amend the following function call.
-"""
+print("Collecting words from  local words.txt file")
+
 all_words = bag_of_words('words.txt', excluded_words)
 
 
@@ -153,7 +148,8 @@ print('Sorting the words by decreasing frequency...')
 orderedwords = all_words.ordered()
 
 
-TOP = 20
+TOP = input("See top n most frequent words:")
+TOP = int(TOP)
 print("The", TOP, "most frequent words are:")
 
 print(orderedwords[:TOP])
