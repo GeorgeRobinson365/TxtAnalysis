@@ -1,2 +1,2 @@
 # TxtAnalysis
- Python program to find most common words from .txt file, excluding specified words
+ Python program to find n most common words from words.txt file, excluding words specified in excluded.txt

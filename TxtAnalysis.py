@@ -34,7 +34,7 @@ class Bag:
         """ Return True if there is at least
             one copy of item in the bag.
         """
-        # Add your own code here to replace the following statement
+        
         if self.items[item] > 0:
             return True
         else:
@@ -44,7 +44,7 @@ class Bag:
         """Return the number of copies of item in the bag.      
         Return zero if the item doesn't occur in the bag.
         """
-        # Add your own code here to replace the following statement
+       
         return self.items[item]
          
 
@@ -52,7 +52,6 @@ class Bag:
         """Return the items ordered by decreasing multiplicity.
         Return a list of (count, item) pairs.
         """
-        # You will be asked to add your own code here later
         
         wordlist = list()
         countlist = list()
@@ -63,14 +62,13 @@ class Bag:
         data.sort(key=lambda tup: tup[0],reverse=True)
         return data
 
-# Change this code in the places indicated
-# in order to implement and test your solution
+
 
 def transform_punctuation(line: str) -> str:
     """ transform any punctuation characters in line into spaces
         returns the transformed line
     """
-    # You do not need to change this function or understand it in detail
+   
     for p in ['(','[', '{',')', ']','}', '.',',',';',':','_'] :
         line = line.replace(p, ' ')
 
@@ -86,9 +84,7 @@ def get_excluded_words(filename: str) -> list:
 
        filename is a string with the name of a text file
     """
-    # We have provided the necessary file handling code below to extract
-    # each word from the file, since there should be no punctuation or
-    # extraneous characters in the file
+   
 
     # open the file in read-only mode
     excluded_words = list()
@@ -108,17 +104,13 @@ def get_excluded_words(filename: str) -> list:
     return excluded_words
 
 
-"""  You will need to amend this function so that the excluded
-     words passed to the function are not added to the bag of words
-     that is returned. You should also set the type annotation
-     for the excluded words argument.
-"""
+
 def bag_of_words(filename: str, excluded_words: list) -> Bag:
     """Return the words occurring in filename as a bag-of-words.
 
        filename is a string with the name of a text file
     """
-    # You do not need to understand the file handling code in detail
+    
     words = Bag()
     # open the file in read-only mode
     with open(filename, 'r', encoding ='utf-8') as file:
@@ -138,24 +130,24 @@ def bag_of_words(filename: str, excluded_words: list) -> Bag:
     return words
 
 
-print("Collecting excluded words in Shakespeare's Hamlet...")
+print("Collecting excluded words from excluded.txt")
 """  Replace the following line by your code to read the excluded words from text file
      'hamlet_excluded_words.txt' and to store them in a suitable data structure.
 """
-excluded_words = get_excluded_words('hamlet_excluded_words.txt')
+excluded_words = get_excluded_words('excluded.txt')
 
 print("Collecting words in Shakespeare's Hamlet...")
 """  You should not need to amend the following function call.
 """
-all_words = bag_of_words('hamlet.txt', excluded_words)
+all_words = bag_of_words('words.txt', excluded_words)
 
 
 print('Sorting the words by decreasing frequency...')
-#  Add your code here to produce the ordered list
+
 orderedwords = all_words.ordered()
 
 
 TOP = 20
 print("The", TOP, "most frequent words are:")
-#  Add your code here to print out the start of the ordered list
+
 print(orderedwords[:TOP])
